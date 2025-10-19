@@ -92,7 +92,7 @@ export default function AboutPage() {
           ) : quote ? (
             <>
               <p className="italic text-gray-700 mb-2">{quote.content}</p>
-              <p className="text-gray-500 text-sm">– {quote.author}</p>
+              <p className="text-gray-500 text-sm"> {quote.author}</p>
             </>
           ) : (
             <p className="text-red-500 text-sm">
