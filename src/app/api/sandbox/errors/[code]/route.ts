@@ -1,11 +1,11 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  context: { params: Promise<{ code: string }> }
 ) {
-  const code = Number(params.code)
+  const { code } = await context.params
+  const num = Number(code)
 
   const messages: Record<number, string> = {
     400: '잘못된 요청입니다.',
@@ -20,14 +20,14 @@ export async function GET(
     503: '서버를 사용할 수 없습니다.',
   }
 
-  const message = messages[code] ?? 'Unknown error'
+  const message = messages[num] ?? 'Unknown error'
 
   return NextResponse.json(
     {
       success: false,
-      error: code,
+      error: num,
       message,
     },
-    { status: code }
+    { status: num }
   )
 }

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import InputValidatorSection from './components/InputValidationSection'
 import JsonValidatorSection from './components/JsonValidatorSection'
 import PostRequestSection from './components/PostRequestSection'
-import ErrorSimulatorSection from './components/ErrorSimulatorSection' // ★ 여기에 import 해야함
+import ErrorSimulatorSection from './components/ErrorSimulatorSection'
 import JwtSection from './components/JwtSection'
 
 export default function SandboxPage() {
