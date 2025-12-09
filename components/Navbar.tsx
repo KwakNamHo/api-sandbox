@@ -5,24 +5,27 @@ import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const pathname = usePathname()
-  const hideNavbar = pathname === '/' // ✅ 홈에서는 숨김
-
-  if (hideNavbar) return null
+  const isHome = pathname === '/'
 
   const links = [
     { href: '/about', label: 'About' },
     { href: '/projects', label: 'Projects' },
-    { href: '/project-details', label: 'Project Details' },
     { href: '/sandbox', label: 'Sandbox' },
+    { href: '/project-details', label: 'Project Details' },
   ]
 
   return (
-    <nav className="w-full fixed top-0 left-0 bg-white/80 backdrop-blur-md shadow-sm z-50">
+    <nav
+      className={`w-full fixed top-0 left-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50 
+        transition-all duration-300 
+        ${isHome ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+      `}
+    >
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
         {/* 로고 */}
         <Link
           href="/"
-          className="font-bold text-xl text-blue-600 hover:text-indigo-600 transition"
+          className="font-semibold text-lg text-gray-900 hover:text-blue-600 transition"
         >
           API Sandbox
         </Link>
